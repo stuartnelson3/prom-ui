@@ -1,0 +1,37 @@
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Prometheus</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.5.3/css/tachyons.min.css"/>
+    <script src="https://use.fontawesome.com/b7508bb100.js"></script>
+  </head>
+
+  <body>
+    <header class="bg-black-90 fixed w-100 ph3 pv3 pv4-ns ph4-m ph5-l">
+      <nav class="w-80 center f6 fw6 ttu tracked">
+        <a class="link dim white dib mr3" href="#" title="Home">Prometheus</a>
+        <a class="link dim white dib mr3" href="#/graphs" title="Graphs">Graphs</a>
+        <a class="link dim white dib mr3" href="#/alerts" title="Alerts">Alerts</a>
+        <a class="link dim white dib" href="#/status" title="Status">Config</a>
+      </nav>
+    </header>
+
+    <!-- Container -->
+    <div class="pt6 w-80 center pa3">
+      <div id="app">
+      </div>
+    </div>
+
+  </body>
+
+  <!-- Your source after making -->
+  <script type="text/javascript" src="/script.js"></script>
+
+  <!-- Removes splash and starts elm app. -->
+  <script type="text/javascript">
+    var node = document.getElementById('app');
+    var app = Elm.Main.embed(node);
+  </script>
+
+</html>
