@@ -1,0 +1,6 @@
+******************
+prom-ui
+------------------
+
+experimental elm re-implementation of prometheus ui with
+https://github.com/terezka/elm-plot for graphing.
