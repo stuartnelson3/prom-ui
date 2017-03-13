@@ -11,13 +11,15 @@ type Route
 
 
 type Msg
-    = Load String
+    = Load
     | Show
     | NewUrl String
+    | UpdateQuery String
 
 
 type alias Model =
     { data : ApiData Data
+    , query : String
     , route : Route
     }
 

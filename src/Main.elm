@@ -4,8 +4,7 @@ import Navigation
 import Types exposing (..)
 import Parsing exposing (urlParser)
 import Api exposing (query)
-import Html exposing (..)
-import Html.Attributes exposing (..)
+import View exposing (view)
 
 
 main : Program Never Model Msg
@@ -20,7 +19,12 @@ main =
 
 init : Navigation.Location -> ( Model, Cmd Msg )
 init location =
-    ( { data = Loading, route = urlParser location }, Cmd.none )
+    ( { data = Loading
+      , query = ""
+      , route = urlParser location
+      }
+    , Cmd.none
+    )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -33,8 +37,11 @@ update msg model =
             -- Parse url stuff and load data
             ( model, Cmd.none )
 
-        Load q ->
-            ( model, query q )
+        UpdateQuery q ->
+            ( { model | query = q }, Cmd.none )
+
+        Load ->
+            ( model, query model.query )
 
 
 urlUpdate : Navigation.Location -> Msg
@@ -57,11 +64,6 @@ urlUpdate location =
 graphUrl : String
 graphUrl =
     "#/graphs"
-
-
-view : Model -> Html Msg
-view model =
-    div [] [ text "hello" ]
 
 
 subscriptions : Model -> Sub Msg
