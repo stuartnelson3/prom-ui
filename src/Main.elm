@@ -5,6 +5,7 @@ import Types exposing (..)
 import Parsing exposing (urlParser)
 import Api exposing (query)
 import View exposing (view)
+import Time
 
 
 main : Program Never Model Msg
@@ -34,14 +35,23 @@ update msg model =
             ( model, Navigation.newUrl url )
 
         Show ->
-            -- Parse url stuff and load data
             ( model, Cmd.none )
 
         UpdateQuery q ->
             ( { model | query = q }, Cmd.none )
 
         Load ->
-            ( model, query model.query )
+            let
+                start =
+                    1489520402.806 * Time.millisecond
+
+                end =
+                    1489524002.806 * Time.millisecond
+            in
+                ( model, query model.query start end )
+
+        Response apiData ->
+            ( { model | data = apiData }, Cmd.none )
 
 
 urlUpdate : Navigation.Location -> Msg

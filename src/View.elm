@@ -14,7 +14,7 @@ view model =
             [ class "f6 link br2 ba ph3 pv2 mr2 dib blue"
             , onClick Load
             ]
-            [ text "Filter Silences" ]
+            [ text "Graph" ]
         , text "hello"
         ]
 

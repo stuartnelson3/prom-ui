@@ -15,6 +15,7 @@ type Msg
     | Show
     | NewUrl String
     | UpdateQuery String
+    | Response (ApiData Data)
 
 
 type alias Model =
@@ -31,14 +32,14 @@ type alias Data =
 
 
 type alias Result =
-    { metric : Metric
-    , value : Value
+    { metric : List ( String, String )
+    , value : List Value
     }
 
 
 type alias Value =
-    { x : Time
-    , y : Maybe Int
+    { x : Float
+    , y : Maybe Float
     }
 
 
