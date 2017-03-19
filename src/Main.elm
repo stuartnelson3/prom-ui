@@ -20,7 +20,7 @@ main =
 
 init : Navigation.Location -> ( Model, Cmd Msg )
 init location =
-    ( { data = Loading
+    ( { data = NotRequested
       , query = ""
       , route = urlParser location
       }
@@ -48,7 +48,7 @@ update msg model =
                 end =
                     1489524002.806 * Time.millisecond
             in
-                ( model, query model.query start end )
+                ( { model | data = Loading }, query model.query start end )
 
         Response apiData ->
             ( { model | data = apiData }, Cmd.none )

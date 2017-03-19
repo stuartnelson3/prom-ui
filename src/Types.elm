@@ -68,3 +68,4 @@ type ApiResponse e a
     = Loading
     | Failure e
     | Success a
+    | NotRequested
